@@ -1,17 +1,17 @@
 $(function () {
-    function SmbTransferViewModel(parameters) {
+    function SMBTransferOctoprintViewModel(parameters) {
         var self = this;
 
         self.settingsViewModel = parameters[0];
 
         self.transferToSmb = function () {
             $.ajax({
-                url: API_BASEURL + "plugin/smb_transfer/transfer",
+                url: API_BASEURL + "plugin/smbtransfer_octoprint/transfer",
                 type: "POST",
                 dataType: "json",
                 success: function () {
                     new PNotify({
-                        title: "SMB Transfer",
+                        title: "SMB Transfer Octoprint",
                         text: "File transfer started.",
                         type: "success",
                         hide: true,
@@ -19,7 +19,7 @@ $(function () {
                 },
                 error: function () {
                     new PNotify({
-                        title: "SMB Transfer",
+                        title: "SMB Transfer Octoprint",
                         text: "File transfer failed.",
                         type: "error",
                         hide: true,
@@ -30,8 +30,8 @@ $(function () {
     }
 
     OCTOPRINT_VIEWMODELS.push({
-        construct: SmbTransferViewModel,
+        construct: SMBTransferOctoprintViewModel,
         dependencies: ["settingsViewModel"],
-        elements: ["#sidebar_plugin_smb_transfer"],
+        elements: ["#sidebar_plugin_smbtransfer_octoprint"],
     });
 });
